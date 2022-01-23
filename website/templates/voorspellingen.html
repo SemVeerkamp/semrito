@@ -1,0 +1,35 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content %}
+
+<h1 align="center">Bekijk hier alle voorspellingen</h1>
+<h4 align="left">Zodra de wedstrijd begonnen is (en de voorspellingen niet meer kunnen worden aangepast verschijnen hier alle voorspellingen</h4>
+<table>
+{% for event in startlist %}
+  <span class="input-group-addon">
+    {{ event }}
+    <br> <br>
+  </span>
+    {% if starttimes[loop.index0] < time_now %}
+            {% for prediction in predictions %}
+                <li class="list-group-item">
+                {% if prediction.event == event %}
+                    {{ prediction.user_name }}
+                    :
+                    <br>
+                    1.
+                    {{ prediction.rider_one }}
+                    2.
+                    {{ prediction.rider_two }}
+                    3.
+                    {{ prediction.rider_three }}
+                </li>
+                {% endif %}
+
+            {% endfor %}
+    {% endif %}
+
+{% endfor %}
+</table>
+
+
+
+{% endblock %}

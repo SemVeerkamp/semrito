@@ -1,0 +1,11 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content %}
+
+<h1 align="center">Bekijk hier de stand</h1>
+
+{% for players in scores %}
+    {{players}} {{scores[players]}}
+<br>
+{% endfor %}
+
+
+{% endblock %}

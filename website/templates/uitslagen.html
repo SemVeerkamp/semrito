@@ -1,0 +1,21 @@
+{% extends "base.html" %} {% block title %}uitslagen{% endblock %} {% block content %}
+<h1 align="center">Bekijk hier de uitslagen</h1>
+<h4 align="left">Zodra de uitslagen van de wedstrijden bekent zijn verschijnen ze hier</h4>
+
+{% for result in results %}
+    <br>
+    <h1>{{result}}</h1>
+
+    <br>
+    {% for j in range(results[result]|count) %}
+        {% if j < 3 %}
+            <img src={{podium_pictures[result][j]}}
+             style="width:100px;height:100px;">
+        {% endif %}
+        <p1 align="center">{{j+1}}.{{results[result][j]}}</p1>
+        <br>
+    {% endfor %}
+
+{% endfor %}
+
+{% endblock %}

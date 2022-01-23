@@ -1,0 +1,11 @@
+{% extends "base.html" %} {% block title %}Refresh_prediction{% endblock %} {% block content
+%}
+
+<h2>Klik op de refresh knop om de startlijsten, starttijden en uitslagen opnieuw in te laden</h2>
+
+<form method="post" action='/refresh_prediction'>
+    <input type="submit" value="RESFRESH" name="refresh"/>
+</form>
+
+
+{% endblock %}

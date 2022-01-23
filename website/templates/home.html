@@ -1,0 +1,63 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+%}
+<h1 align="center">Vul hier je voorspellingen in</h1>
+<h4 align="left">Selecteer de bovenste kolom (de afstand) en selecteer je drie schaatsers die jij wilt kiezen. Klik daarna op bevestigen</h4>
+<br>
+<h4 align="left">Wil je je voorspelling veranderen? klik op het vraagteken achter je voorspelling om je vorige voorspelling te verwijderen. Zodra je je vorige voorspelling hebt verwijderd kan je een nieuwe voorspelling toevoegen</h4>
+
+
+
+{% for event in startlist %}
+    <form class="form-horizontal" method="POST" role="form">
+        <div class="input-group">
+          <span class="input-group-addon">{{ event }}
+              <br> <br>
+              {{ starttimes[loop.index0] }}</span>
+             <select name='prediction' id="prediction"
+              class="selectpicker show-menu-arrow form-control"
+              multiple data-max-options="4"
+              data-live-search="true">
+                 <option
+                     value="{{ event }}">
+                     {{ event }}
+                 </option>
+                {% for i in range(startlist[event]|count) %}
+                <option
+                    value="{{startlist[event][i]}}">
+                           {{ i+1 }}. {{startlist[event][i]}}
+                </option>
+                {% endfor %}
+      </select>
+        {% if starttimes[loop.index0] < time_now %}
+            <span class="input-group-btn">
+            <button class="btn btn-default" type="submit" id="bevestigen">Bevestigen</button>
+            </span>
+        {% endif %}
+        </div>
+        </form>
+        {% for prediction in user.predictions %}
+            <li class="list-group-item">
+          {% if prediction.event == event %}
+                {{ prediction.rider_one }}
+                {{ prediction.rider_two }}
+                {{ prediction.rider_three }}
+                    <button type="button" class="close" onClick="deletePrediction({{ prediction.id }})">
+                         <span aria-hidden="true">&times;</span>
+                    </button>
+            </li>
+          {% endif %}
+        {% endfor %}
+
+
+
+
+
+  <br />  <br />  <br />  <br />
+{% endfor %}
+
+
+
+
+
+
+{% endblock %}
