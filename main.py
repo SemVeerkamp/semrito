@@ -1,4 +1,8 @@
 from website import create_app
+import os
+
+PORT=4000
+os.environ.get('PORT', 5000)
 
 app = create_app()
 
