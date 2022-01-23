@@ -1,1 +1,1 @@
-web: gunicorn maingit init:app
+web: gunicorn --bind 0.0.0.0:$PORT maingit init:app
