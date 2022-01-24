@@ -22,7 +22,7 @@ def create_app():
 
     from .models import User, Prediction
 
-    create_database(app)
+    create_database()
 
     login_manager = LoginManager()
     login_manager.login_view = 'auth.login'
