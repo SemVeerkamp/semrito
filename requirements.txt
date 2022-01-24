@@ -20,5 +20,5 @@ SQLAlchemy==1.4.29
 urllib3==1.26.8
 Werkzeug==2.0.2
 yarg==0.1.9
-psycopg2 ==2.9.3
+psycopg2-binary ==2.9.3
 gunicorn
